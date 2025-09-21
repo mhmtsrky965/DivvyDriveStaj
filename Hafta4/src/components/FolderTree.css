@@ -1,0 +1,232 @@
+.folder-tree-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4000; /* Daha yüksek z-index */
+  animation: fadeIn 0.3s ease-out;
+}
+
+.folder-tree-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+  border: 2px solid #e9ecef;
+}
+
+.folder-tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+  background: linear-gradient(135deg, #4285f4 0%, #667eea 100%);
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.folder-tree-header h3 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.folder-tree-info {
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.folder-tree-info p {
+  margin: 0;
+  color: #495057;
+  font-size: 14px;
+}
+
+.folder-tree-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  max-height: 300px;
+  background: white;
+}
+
+.root-folder {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+}
+
+.folder-tree-item {
+  margin-bottom: 2px;
+}
+
+.folder-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.folder-row:hover {
+  background: #e3f2fd;
+}
+
+.folder-row.selected {
+  background: #2196f3;
+  color: white;
+}
+
+.folder-row.selected .folder-name {
+  color: white;
+  font-weight: 500;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  margin-right: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.expand-button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.folder-row.selected .expand-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.folder-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.folder-name {
+  font-size: 14px;
+  color: #495057;
+  font-weight: 500;
+}
+
+.folder-children {
+  margin-left: 20px;
+  border-left: 2px solid #e9ecef;
+  padding-left: 8px;
+}
+
+.folder-tree-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #e9ecef;
+  background: #f8f9fa;
+  border-radius: 0 0 10px 10px;
+}
+
+.selected-path {
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 1rem;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.folder-tree-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.cancel-button, .confirm-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.cancel-button {
+  background: #6c757d;
+  color: white;
+}
+
+.cancel-button:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.confirm-button {
+  background: #28a745;
+  color: white;
+}
+
+.confirm-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.confirm-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: white;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
