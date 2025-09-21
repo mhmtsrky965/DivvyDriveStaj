@@ -1,0 +1,632 @@
+{
+	"info": {
+		"_postman_id": "3d1ead3d-3888-4ecc-b4ac-2f7b7c1abb6a",
+		"name": "ODEV3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47394128"
+	},
+	"item": [
+		{
+			"name": "TicketAl",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"ticketID\", jsonData.ID);\r",
+							"\r",
+							"console.log(\"Ticket ID kaydedildi: \" + jsonData.ID);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"KullaniciAdi\": \"Test\",\r\n    \"Sifre\": \"123456Abc.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/TicketAl",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"TicketAl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KlasorListesiGetir",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ca5094ef-eae0-4bd5-a94a-14db3b8f3950",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "NDSServis",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/KlasorListesiGetir?ticketID={{ticketID}}&klasorYolu=",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"KlasorListesiGetir"
+					],
+					"query": [
+						{
+							"key": "ticketID",
+							"value": "{{ticketID}}"
+						},
+						{
+							"key": "klasorYolu",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KlasorOlustur",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorAdi\": \"odev33\",\r\n    \"klasorYolu\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/KlasorOlustur",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"KlasorOlustur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KlasorSil",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorAdi\": \"odev33\",\r\n    \"klasorYolu\": \"odev3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/KlasorSil",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"KlasorSil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KlasorGuncelle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorAdi\": \"odev33\",\r\n    \"klasorYolu\": \"\",\r\n    \"yeniKlasorAdi\": \"odev333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/KlasorGuncelle",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"KlasorGuncelle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KlasorTasi",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorAdi\": \"odev333\",\r\n    \"klasorYolu\": \"\",\r\n    \"yeniKlasorYolu\": \"odev3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/KlasorTasi",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"KlasorTasi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaListesiGetir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/DosyaListesiGetir?ticketID={{ticketID}}&klasorYolu=odev3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaListesiGetir"
+					],
+					"query": [
+						{
+							"key": "ticketID",
+							"value": "{{ticketID}}"
+						},
+						{
+							"key": "klasorYolu",
+							"value": "odev3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaOlustur",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorYolu\": \"odev3\",\r\n    \"dosyaAdi\": \"postmantestdosya1.txt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaOlustur",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaOlustur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaSil",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorYolu\": \"odev3\",\r\n    \"dosyaAdi\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaSil",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaSil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaGuncelle",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorYolu\": \"/\",\r\n    \"dosyaAdi\": \"test.txt\",\r\n    \"yeniDosyaAdi\": \"yeniTest.txt\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaGuncelle",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaGuncelle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaTasi",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"klasorYolu\": \"/\",\r\n    \"dosyaAdi\": \"test.txt\",\r\n    \"yeniDosyaYolu\": \"/YeniKlasor/\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaTasi",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaTasi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaMetaDataKaydiOlustur",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"parcaSayisi\": 3,\r\n    \"dosyaAdi\": \"odev3buyuk.html\",\r\n    \"herBirParcaninBoyutuByte\": 524288\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaMetaDataKaydiOlustur",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaMetaDataKaydiOlustur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaParcalariYukle",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mhmtsrky/Desktop/odev3/odev3buyuk_chunks/chunk_2"
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaParcalariYukle?ticketID={{ticketID}}&tempKlasorID=9861a29b-f80c-410f-bb25-771b6d566f65&parcaHash=53e949d90c273d01f7b285999b7d68db&parcaNumarasi=3",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaParcalariYukle"
+					],
+					"query": [
+						{
+							"key": "ticketID",
+							"value": "{{ticketID}}"
+						},
+						{
+							"key": "tempKlasorID",
+							"value": "9861a29b-f80c-410f-bb25-771b6d566f65"
+						},
+						{
+							"key": "parcaHash",
+							"value": "53e949d90c273d01f7b285999b7d68db"
+						},
+						{
+							"key": "parcaNumarasi",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaYayinla",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"ID\": \"9861a29b-f80c-410f-bb25-771b6d566f65\",\r\n    \"dosyaAdi\": \"odev3buyuk.html\",\r\n    \"klasorYolu\": \"odev3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaYayinla",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaYayinla"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaDirektYukle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/mhmtsrky/Desktop/odev3/odev3direkt.html"
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaDirektYukle?ticketID={{ticketID}}&dosyaAdi=odev3direkt.html&klasorYolu=odev3&dosyaHash=d1a71a87142ba736d0fcc248915ef2e4",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaDirektYukle"
+					],
+					"query": [
+						{
+							"key": "ticketID",
+							"value": "{{ticketID}}"
+						},
+						{
+							"key": "dosyaAdi",
+							"value": "odev3direkt.html"
+						},
+						{
+							"key": "klasorYolu",
+							"value": "odev3"
+						},
+						{
+							"key": "dosyaHash",
+							"value": "d1a71a87142ba736d0fcc248915ef2e4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DosyaIndir",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ticketID\": \"{{ticketID}}\",\r\n    \"indirilecekYol\": \"/indirilenler/\",\r\n    \"klasorYolu\": \"odev3\",\r\n    \"dosyaAdi\": \"odev3direkt.html\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/DosyaIndir",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"DosyaIndir"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ca5094ef-eae0-4bd5-a94a-14db3b8f3950",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "NDSServis",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
